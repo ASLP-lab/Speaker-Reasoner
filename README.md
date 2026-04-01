@@ -51,25 +51,38 @@ Speaker-Reasoner is an end-to-end Speech LLM for **timestamped speaker-attribute
 
 ### Segmented Evaluation (40–50s segments)
 
-| Model | AISHELL4-Eval DER↓ | AISHELL4-Eval CER↓ | AISHELL4-Eval cpCER↓ | AISHELL4-Eval ∆cp↓ | Alimeeting-Far DER↓ | Alimeeting-Far CER↓ | Alimeeting-Far cpCER↓ | Alimeeting-Far ∆cp↓ |
-|---|---|---|---|---|---|---|---|---|
-| **Cascade Baselines** | | | | | | | | |
-| Pyannote3.1 + Paraformer | 8.10 | 19.18 | 26.24 | 7.06 | 19.13 | 30.15 | 45.39 | 15.24 |
-| **End-to-End Baselines** | | | | | | | | |
-| Gemini-2.5-Pro† | 36.07 | 19.81 | 25.11 | 5.30 | 56.39 | 30.16 | 39.29 | 9.13 |
-| Qwen3-Omni-30B-A3B-Instruct | 32.42 | 14.46 | 22.22 | 7.76 | 37.15 | 25.40 | 36.28 | 10.88 |
-| Qwen2.5-Omni-7B | 85.68 | 33.37 | 60.45 | 27.08 | 91.77 | 38.13 | 73.38 | 35.25 |
-| SpeakerLM (212.25h) | – | 17.75 | 26.14 | 8.39 | – | 18.63 | 32.22 | 13.59 |
-| SpeakerLM (7638.95h) | – | 17.17 | 18.37 | 1.20 | – | 13.97 | 16.05 | 2.08 |
-| VibeVoice-ASR | 10.88 | 22.30 | 26.30 | 4.00 | 20.70 | 34.67 | 40.54 | 5.87 |
-| TagSpeech-Alimeeting | 37.51 | 35.70 | 53.44 | 17.74 | 52.46 | 47.11 | 68.74 | 21.63 |
-| **Ours** | | | | | | | | |
-| Qwen3-Omni + SOT sft (Stage 1) | – | 17.65 | 19.59 | 1.94 | – | 24.24 | 26.03 | 1.79 |
-| Speaker-Reasoner Base (Stage 1) | 6.24 | 14.04 | 16.54 | 2.50 | 8.96 | 21.16 | 22.64 | 1.48 |
-| Speaker-Reasoner Multi-turn (Stage 2) | 5.19 | 13.83 | 14.93 | 1.10 | 7.47 | 20.34 | 20.29 | −0.05 |
-| **Speaker-Reasoner Multi-turn w/ SAC (Stage 3)** | **5.26** | **13.83** | **14.73** | **0.90** | **7.34** | **20.57** | **20.43** | **−0.14** |
-| Speaker-Reasoner Base 7B | 12.00 | 15.65 | 25.60 | 9.95 | 18.43 | 24.97 | 38.12 | 13.15 |
-| Speaker-Reasoner Multi-turn 7B | 9.38 | 15.31 | 22.91 | 7.60 | 15.56 | 24.33 | 34.81 | 10.48 |
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th colspan="4" align="center">AISHELL4-Eval</th>
+      <th colspan="4" align="center">Alimeeting-Far</th>
+    </tr>
+    <tr>
+      <th>DER↓</th><th>CER↓</th><th>cpCER↓</th><th>∆cp↓</th>
+      <th>DER↓</th><th>CER↓</th><th>cpCER↓</th><th>∆cp↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td colspan="9"><b>Cascade Baselines</b></td></tr>
+    <tr><td>Pyannote3.1 + Paraformer</td><td>8.10</td><td>19.18</td><td>26.24</td><td>7.06</td><td>19.13</td><td>30.15</td><td>45.39</td><td>15.24</td></tr>
+    <tr><td colspan="9"><b>End-to-End Baselines</b></td></tr>
+    <tr><td>Gemini-2.5-Pro†</td><td>36.07</td><td>19.81</td><td>25.11</td><td>5.30</td><td>56.39</td><td>30.16</td><td>39.29</td><td>9.13</td></tr>
+    <tr><td>Qwen3-Omni-30B-A3B-Instruct</td><td>32.42</td><td>14.46</td><td>22.22</td><td>7.76</td><td>37.15</td><td>25.40</td><td>36.28</td><td>10.88</td></tr>
+    <tr><td>Qwen2.5-Omni-7B</td><td>85.68</td><td>33.37</td><td>60.45</td><td>27.08</td><td>91.77</td><td>38.13</td><td>73.38</td><td>35.25</td></tr>
+    <tr><td>SpeakerLM (212.25h)</td><td>–</td><td>17.75</td><td>26.14</td><td>8.39</td><td>–</td><td>18.63</td><td>32.22</td><td>13.59</td></tr>
+    <tr><td>SpeakerLM (7638.95h)</td><td>–</td><td>17.17</td><td>18.37</td><td>1.20</td><td>–</td><td>13.97</td><td>16.05</td><td>2.08</td></tr>
+    <tr><td>VibeVoice-ASR</td><td>10.88</td><td>22.30</td><td>26.30</td><td>4.00</td><td>20.70</td><td>34.67</td><td>40.54</td><td>5.87</td></tr>
+    <tr><td>TagSpeech-Alimeeting</td><td>37.51</td><td>35.70</td><td>53.44</td><td>17.74</td><td>52.46</td><td>47.11</td><td>68.74</td><td>21.63</td></tr>
+    <tr><td colspan="9"><b>Ours</b></td></tr>
+    <tr><td>Qwen3-Omni + SOT sft (Stage 1)</td><td>–</td><td>17.65</td><td>19.59</td><td>1.94</td><td>–</td><td>24.24</td><td>26.03</td><td>1.79</td></tr>
+    <tr><td>Speaker-Reasoner Base (Stage 1)</td><td>6.24</td><td>14.04</td><td>16.54</td><td>2.50</td><td>8.96</td><td>21.16</td><td>22.64</td><td>1.48</td></tr>
+    <tr><td>Speaker-Reasoner Multi-turn (Stage 2)</td><td>5.19</td><td>13.83</td><td>14.93</td><td>1.10</td><td>7.47</td><td>20.34</td><td>20.29</td><td>−0.05</td></tr>
+    <tr><td><b>Speaker-Reasoner Multi-turn w/ SAC (Stage 3)</b></td><td><b>5.26</b></td><td><b>13.83</b></td><td><b>14.73</b></td><td><b>0.90</b></td><td><b>7.34</b></td><td><b>20.57</b></td><td><b>20.43</b></td><td><b>−0.14</b></td></tr>
+    <tr><td>Speaker-Reasoner Base 7B</td><td>12.00</td><td>15.65</td><td>25.60</td><td>9.95</td><td>18.43</td><td>24.97</td><td>38.12</td><td>13.15</td></tr>
+    <tr><td>Speaker-Reasoner Multi-turn 7B</td><td>9.38</td><td>15.31</td><td>22.91</td><td>7.60</td><td>15.56</td><td>24.33</td><td>34.81</td><td>10.48</td></tr>
+  </tbody>
+</table>
 
 † Closed-source model. DER unavailable for SpeakerLM and SOT-based models due to incompatible output formats.
 
