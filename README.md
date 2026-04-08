@@ -5,7 +5,7 @@
 <div style="text-align: center;">
   <img src="https://img.shields.io/badge/Python-3.10+-blue" alt="Python">
   <img src="https://img.shields.io/badge/License-Apache%202.0-green" alt="License">
-  <a href="https://arxiv.org/abs/TODO">
+  <a href="https://arxiv.org/abs/2604.03074">
     <img src="https://img.shields.io/badge/arXiv-paper-red" alt="arXiv Paper">
   </a>
   <a href="https://github.com/ASLP-lab/Speaker-Reasoner">
@@ -136,7 +136,15 @@ Coming soon.
 If you find this work useful, please cite:
 
 ```bibtex
-
+@article{lin2026speakerreasoner,
+  title={Speaker-Reasoner: Scaling Interaction Turns and Reasoning Patterns for Timestamped Speaker-Attributed ASR}, 
+  author={Zhennan Lin and Shuai Wang and Zhaokai Sun and Pengyuan Xie and Chuan Xie and Jie Liu and Qiang Zhang and Lei Xie},
+  year={2026},
+  eprint={2604.03074},
+  archivePrefix={arXiv},
+  primaryClass={eess.AS},
+  url={https://arxiv.org/abs/2604.03074}, 
+}
 ```
 
 ## License
