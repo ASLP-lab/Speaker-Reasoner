@@ -46,12 +46,81 @@ Speaker-Reasoner is an end-to-end Speech LLM for **timestamped speaker-attribute
 - **Speaker-aware context cache**: extends processing to long-form audio beyond the training context window while preserving speaker consistency across chunks
 - **Three-stage progressive training**: multi-task foundation → temporal interaction learning → cache-conditioned decoding
 - **State-of-the-art performance**: outperforms strong baselines including closed-source Gemini-2.5-Pro on AliMeeting and AISHELL-4
+- 🔥 **Bilingual & Scaled up**: extended training on 4,194 hours of multi-domain data, natively supporting English and Mandarin across complex multi-speaker scenarios
 
 ## 📊 Results
 
+### Comprehensive Multi-Domain Evaluation
+
+<p>We further scaled up Speaker-Reasoner with 4,194 hours of bilingual (ZH/EN) training data. The model demonstrates superior performance across diverse scenarios, including challenging video domains and various public meeting datasets.</p>
+
+<div style="overflow-x: auto;">
+<table style="white-space: nowrap;">
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th colspan="4" align="center">Video-Internal-Eval</th>
+      <th colspan="4" align="center">Video-Internal-Eval-zh</th>
+      <th colspan="4" align="center">Video-Internal-Eval-en</th>
+      <th colspan="4" align="center">AISHELL4-Eval</th>
+      <th colspan="4" align="center">Alimeeting-Far</th>
+      <th colspan="4" align="center">AMI-SDM</th>
+      <th colspan="4" align="center">MLC-SLM-Eval-1</th>
+      <th colspan="4" align="center">MLC-SLM-Eval-2</th>
+    </tr>
+    <tr>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+      <th>WER↓</th><th>cpWER↓</th><th>DER↓</th><th>∆cp↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Gemini-2.5-Pro</td>
+      <td>22.47</td><td>44.13</td><td>74.05</td><td>21.66</td>
+      <td>18.28</td><td>40.97</td><td>69.35</td><td>22.69</td>
+      <td>55.40</td><td>68.82</td><td>100.95</td><td>13.42</td>
+      <td>19.81</td><td>25.11</td><td>36.07</td><td>5.30</td>
+      <td>30.16</td><td>39.29</td><td>56.39</td><td>9.13</td>
+      <td>31.66</td><td>39.98</td><td>50.28</td><td>8.32</td>
+      <td>36.87</td><td>41.88</td><td>42.33</td><td>5.01</td>
+      <td>26.73</td><td>32.19</td><td>46.19</td><td>5.46</td>
+    </tr>
+    <tr>
+      <td>VibeVoice-ASR</td>
+      <td>16.45</td><td>58.60</td><td>47.18</td><td>42.15</td>
+      <td>17.70</td><td>62.06</td><td>47.65</td><td>44.36</td>
+      <td>7.11</td><td>32.65</td><td>44.62</td><td>25.54</td>
+      <td>22.19</td><td>26.16</td><td>8.94</td><td>3.97</td>
+      <td>34.31</td><td>39.92</td><td>19.62</td><td>5.61</td>
+      <td>30.53</td><td>35.86</td><td>21.00</td><td>5.33</td>
+      <td>10.30</td><td>13.45</td><td>6.27</td><td>3.15</td>
+      <td><b>7.97</b></td><td><b>11.38</b></td><td><b>3.14</b></td><td>3.41</td>
+    </tr>
+    <tr>
+      <td><b>Speaker-Reasoner Multi-turn</b></td>
+      <td><b>6.27</b></td><td><b>24.43</b></td><td><b>15.33</b></td><td><b>18.16</b></td>
+      <td><b>6.50</b></td><td><b>25.81</b></td><td><b>16.68</b></td><td><b>19.31</b></td>
+      <td><b>4.42</b></td><td><b>16.31</b></td><td><b>7.58</b></td><td><b>11.89</b></td>
+      <td><b>7.13</b></td><td><b>8.14</b></td><td><b>3.38</b></td><td><b>1.01</b></td>
+      <td><b>19.72</b></td><td><b>19.92</b></td><td><b>6.70</b></td><td><b>0.20</b></td>
+      <td><b>23.29</b></td><td><b>25.16</b></td><td><b>13.56</b></td><td><b>1.87</b></td>
+      <td><b>9.17</b></td><td><b>11.74</b></td><td><b>4.76</b></td><td><b>2.57</b></td>
+      <td>8.54</td><td>11.76</td><td>4.35</td><td><b>3.22</b></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 ### Segmented Evaluation (40–50s segments)
 
-<table>
+<div style="overflow-x: auto;">
+<table style="white-space: nowrap;">
   <thead>
     <tr>
       <th rowspan="2">Model</th>
@@ -83,23 +152,46 @@ Speaker-Reasoner is an end-to-end Speech LLM for **timestamped speaker-attribute
     <tr><td>Speaker-Reasoner Multi-turn 7B</td><td>9.38</td><td>15.31</td><td>22.91</td><td>7.60</td><td>15.56</td><td>24.33</td><td>34.81</td><td>10.48</td></tr>
   </tbody>
 </table>
+</div>
 
 † Closed-source model. DER unavailable for SpeakerLM and SOT-based models due to incompatible output formats.
 
 ### Long-form Evaluation (without segmentation)
 
-| Model | AISHELL4-Eval DER↓ | AISHELL4-Eval cpCER↓ |
-|---|---|---|
-| Gemini-2.5-Pro | 15.32 | 31.59 |
-| Speaker-Reasoner Multi-turn w/ SAC | 21.60 | 36.20 |
+<div style="overflow-x: auto;">
+<table style="white-space: nowrap;">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>AISHELL4-Eval DER↓</th>
+      <th>AISHELL4-Eval cpCER↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Gemini-2.5-Pro</td><td>15.32</td><td>31.59</td></tr>
+    <tr><td>Speaker-Reasoner Multi-turn w/ SAC</td><td>21.60</td><td>36.20</td></tr>
+  </tbody>
+</table>
+</div>
 
 ### Speaker Attribute Evaluation (AISHELL4-Eval)
 
-| Model | Gender ACC↑ | Speaker Count ACC (SCA)↑ |
-|---|---|---|
-| Gemini-2.5-Pro | 94.80 | 67.03 |
-| Qwen3-Omni-30B-A3B-Instruct | 97.12 | 60.49 |
-| Speaker-Reasoner Multi-turn | **96.80** | **69.03** |
+<div style="overflow-x: auto;">
+<table style="white-space: nowrap;">
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Gender ACC↑</th>
+      <th>Speaker Count ACC (SCA)↑</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Gemini-2.5-Pro</td><td>94.80</td><td>67.03</td></tr>
+    <tr><td>Qwen3-Omni-30B-A3B-Instruct</td><td>97.12</td><td>60.49</td></tr>
+    <tr><td>Speaker-Reasoner Multi-turn</td><td><b>96.80</b></td><td><b>69.03</b></td></tr>
+  </tbody>
+</table>
+</div>
 
 ## Installation
 
@@ -121,7 +213,12 @@ pip install ms-swift
 
 ## Model Download
 
-Coming soon.
+We provide the pre-trained model weights on Hugging Face. You can download the corresponding versions based on your requirements:
+
+| Model Version | Description | Language | Download |
+| :--- | :--- | :---: | :---: |
+| **Speaker-Reasoner** | The standard multi-turn model evaluated in the main paper. | ZH | [🤗 Hugging Face](https://huggingface.co/ASLP-lab/Speaker-Reasoner) |
+| **Speaker-Reasoner-4194h** | Scaled-up version trained on 4,194 hours of multi-domain data. | ZH/EN | [🤗 Hugging Face](https://huggingface.co/ASLP-lab/Speaker-Reasoner-4194h) |
 
 ## Training
 
@@ -129,7 +226,26 @@ Coming soon.
 
 ## Inference
 
-Coming soon.
+### vLLM
+
+Speaker-Reasoner is built on top of [Qwen3-Omni-30B-A3B-Instruct](https://huggingface.co/Qwen/Qwen3-Omni-30B-A3B-Instruct). To run it, you will need to install a custom branch of vLLM from source.
+
+```bash
+git clone -b qwen3_omni https://github.com/wangxiongts/vllm.git
+cd vllm
+pip install -r requirements/build.txt
+pip install -r requirements/cuda.txt
+export VLLM_PRECOMPILED_WHEEL_LOCATION=https://wheels.vllm.ai/a5dd03c1ebc5e4f56f3c9d3dc0436e9c582c978f/vllm-0.9.2-cp38-abi3-manylinux1_x86_64.whl
+VLLM_USE_PRECOMPILED=1 pip install -e . -v --no-build-isolation
+# If you meet an "Undefined symbol" error while using VLLM_USE_PRECOMPILED=1, please use "pip install -e . -v" to build from source.
+# Install the Transformers
+pip install git+https://github.com/huggingface/transformers
+pip install accelerate
+pip install qwen-omni-utils -U
+pip install -U flash-attn --no-build-isolation
+```
+
+> For more details on compiling vLLM from source, refer to the [vLLM official documentation](https://docs.vllm.ai/en/latest/getting_started/installation/gpu.html#set-up-using-python-only-build-without-compilation).
 
 ## Citation
 

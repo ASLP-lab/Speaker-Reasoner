@@ -1,0 +1,5 @@
+{
+    "chat_template": "{% for message in messages %}{{ '<|im_start|>' + message['role'] + '\n' }}{% if message['content'] is string %}{{ message['content'] }}{% else %}{% for item in message['content'] %}{% if item['type'] == 'text' %}{{ item['text'] }}{% elif item['type'] == 'audio' %}{{ '<|audio_start|><|audio_pad|><|audio_end|>' }}{% elif item['type'] == 'image' %}{{ '<|vision_start|><|image_pad|><|vision_end|>' }}{% elif item['type'] == 'video' %}{{ '<|vision_start|><|video_pad|><|vision_end|>' }}{% endif %}{% endfor %}{% endif %}{{ '<|im_end|>\n' }}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}",
+    "initial_user_text": "分析这段音频$X$，将其划分为合适的片段。对于每个片段，请逐步推导说话人ID、性别、时间戳及转录内容。现在，请先概括音频整体情况，并给出第一个片段的边界。",
+    "turn_user_text": "当前片段作为$O_{turn}$。"
+}
