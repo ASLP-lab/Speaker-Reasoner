@@ -8,6 +8,9 @@
   <a href="https://arxiv.org/abs/2604.03074">
     <img src="https://img.shields.io/badge/arXiv-paper-red" alt="arXiv Paper">
   </a>
+  <a href="https://huggingface.co/collections/ASLP-lab/speaker-reasoner">
+    <img src="https://img.shields.io/badge/HuggingFace-Models-ffd21e" alt="HuggingFace">
+  </a>
   <a href="https://github.com/ASLP-lab/Speaker-Reasoner">
     <img src="https://img.shields.io/badge/GitHub-repo-black" alt="GitHub">
   </a>
