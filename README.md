@@ -5,6 +5,9 @@
 <div style="text-align: center;">
   <img src="https://img.shields.io/badge/Python-3.10+-blue" alt="Python">
   <img src="https://img.shields.io/badge/License-Apache%202.0-green" alt="License">
+  <a href="https://aslp-lab.github.io/Speaker-Reasoner-Demo/">
+    <img src="https://img.shields.io/badge/Demo-page-blue" alt="Demo">
+  </a>
   <a href="https://arxiv.org/abs/2604.03074">
     <img src="https://img.shields.io/badge/arXiv-paper-red" alt="arXiv Paper">
   </a>
