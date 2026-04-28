@@ -43,7 +43,7 @@
 ## 🎬 Demo Video
 
 <div align="center">
-  <video src="figs/Demo-video.mp4" controls width="80%"></video>
+  <video src="https://github.com/ASLP-lab/Speaker-Reasoner/raw/main/figs/Demo-video.mp4" controls width="80%"></video>
 </div>
 
 ## 📖 Introduction
