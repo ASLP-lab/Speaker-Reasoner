@@ -46,6 +46,8 @@
   <video src="https://github.com/user-attachments/assets/9a57a227-9ac9-4bfb-961f-39df8f93b680" controls width="80%"></video>
 </div>
 
+For more demos, please visit the [demo page](https://aslp-lab.github.io/Speaker-Reasoner-Demo/).
+
 ## 📖 Introduction
 
 Speaker-Reasoner is an end-to-end Speech LLM for **timestamped speaker-attributed ASR** featuring agentic multi-turn temporal reasoning. Instead of single-pass inference, the model iteratively analyzes global audio structure, autonomously predicts temporal boundaries, and performs fine-grained segment analysis, jointly modeling speaker identity, gender, timestamps, and transcription. A speaker-aware cache further extends processing to audio exceeding the training context window.
