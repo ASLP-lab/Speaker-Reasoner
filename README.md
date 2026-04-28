@@ -43,7 +43,7 @@
 ## 🎬 Demo Video
 
 <div align="center">
-  <video src="figs/Demo-video.mp4" controls width="80%"></video>
+  <video src="https://github.com/user-attachments/assets/9a57a227-9ac9-4bfb-961f-39df8f93b680" controls width="80%"></video>
 </div>
 
 ## 📖 Introduction
