@@ -40,7 +40,13 @@
   </p>
 </div>
 
-----
+## 🎬 Demo Video
+
+<div align="center">
+  <video src="figs/Demo-video.mp4" controls width="80%"></video>
+</div>
+
+## 📖 Introduction
 
 Speaker-Reasoner is an end-to-end Speech LLM for **timestamped speaker-attributed ASR** featuring agentic multi-turn temporal reasoning. Instead of single-pass inference, the model iteratively analyzes global audio structure, autonomously predicts temporal boundaries, and performs fine-grained segment analysis, jointly modeling speaker identity, gender, timestamps, and transcription. A speaker-aware cache further extends processing to audio exceeding the training context window.
 
